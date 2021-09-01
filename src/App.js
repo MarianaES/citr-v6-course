@@ -1,18 +1,20 @@
 // import React from "react"; Not needed anymore, Babel is smart enogh to identify JSXs
 import ReactDOM from "react-dom";
-import Pet from "./Pet";
+// import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
-      <Pet
+      {/* <Pet
         name="Koly (Gorda preciosa)"
         animal="Dog"
         breed="Beagle/Australian Cattle"
       />
       <Pet name="Agaporni" animal="Bird" breed="Agaporni" />
-      <Pet name="Beethoven" animal="Dog" breed="St. Bernard" />
+      <Pet name="Beethoven" animal="Dog" breed="St. Bernard" /> */}
+      <SearchParams />
     </div>
   );
 };
