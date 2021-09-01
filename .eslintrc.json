@@ -4,12 +4,13 @@
     "plugin:import/errors",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended", 
     "prettier"
   ],
   "rules": {
     // Zero just means turn off
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0,
+    "react/react-in-jsx-scope": 0
   },
   "plugins": ["react", "import", "jsx-a11y"],
   "parserOptions": { 
