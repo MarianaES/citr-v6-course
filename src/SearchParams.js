@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import useBreedList from "./useBreedList";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -9,7 +10,7 @@ const SearchParams = () => {
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
 
-  const breeds = [];
+  const [breeds] = useBreedList(animal);
 
   // Without the [] hundreds of requests are made (run after every rerender).
   useEffect(() => {
@@ -17,11 +18,11 @@ const SearchParams = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const timer = setTimeout(() => alert("hi"), 3000);
 
     return () => clearTimeout(timer); // gets call when the component is removed
-  }, [animal]);
+  }, [animal]); */
 
   async function requestPets() {
     const res = await fetch(
@@ -45,6 +46,7 @@ const SearchParams = () => {
           />
         </label>
         <label htmlFor="animal">
+          Animal
           <select
             id="animal"
             onChange={(e) => setAnimal(e.target.value)}
@@ -60,6 +62,7 @@ const SearchParams = () => {
           </select>
         </label>
         <label htmlFor="breed">
+          Breed
           <select
             id="breedd"
             onChange={(e) => setBreed(e.target.value)}
