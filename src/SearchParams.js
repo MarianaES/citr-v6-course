@@ -20,7 +20,7 @@ const SearchParams = () => {
   useEffect(() => {
     const timer = setTimeout(() => alert("hi"), 3000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); // gets call when the component is removed
   }, [animal]);
 
   async function requestPets() {
