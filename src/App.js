@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 // import React from "react"; Not needed anymore, Babel is smart enogh to identify JSXs
 import ReactDOM from "react-dom";
 // import Pet from "./Pet";
@@ -43,4 +44,10 @@ const App = () => {
 */
 
 // ReactDOM.render(React.createElement(App), document.getElementById("root"));
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  // Keep in line and not using legacy features or things that will be soon depracated
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
