@@ -1,13 +1,26 @@
 import { StrictMode } from "react";
 // import React from "react"; Not needed anymore, Babel is smart enogh to identify JSXs
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Pet from "./Pet";
 import SearchParams from "./SearchParams";
+import Details from "./Details";
 
 const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
+      <Router>
+        {/* React Router will render all components that the path match. That's why we use Switch */}
+        <Switch>
+          <Route path="/details/:id">
+            <Details />
+          </Route>
+          <Route path="/">
+            <SearchParams />
+          </Route>
+        </Switch>
+      </Router>
       {/* <Pet
         name="Koly (Gorda preciosa)"
         animal="Dog"
@@ -15,7 +28,6 @@ const App = () => {
       />
       <Pet name="Agaporni" animal="Bird" breed="Agaporni" />
       <Pet name="Beethoven" animal="Dog" breed="St. Bernard" /> */}
-      <SearchParams />
     </div>
   );
 };
