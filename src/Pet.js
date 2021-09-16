@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 // import React from "react"; Not needed anymore, Babel is smart enogh to identify JSXs
 
 const Pet = ({ name, animal, breed, images, location, id }) => {
@@ -7,7 +8,9 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
     hero = images[0];
   }
   return (
-    <a href={`/details/${id}`} className="pet">
+    // Link avoid a reload page
+    <Link to={`/details/${id}`} className="pet">
+      {/* <a href={`/details/${id}`} className="pet"> */}
       <div className="image-container">
         <img src={hero} alt={name} />
       </div>
@@ -15,7 +18,8 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
         <h1>{name}</h1>
         <h2>{`${animal} - ${breed} - ${location}`}</h2>
       </div>
-    </a>
+      {/* </a> */}
+    </Link>
   );
 };
 
