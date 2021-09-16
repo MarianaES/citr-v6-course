@@ -2,11 +2,13 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class Details extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = { loading: true };
-  }
+  //   this.state = { loading: true };
+  // }
+  // After npm i -D @babel/plugin-proposal-class-properties@7.13.0 @babel/preset-env@7.13.5 @babel/eslint-parser@7.13.4
+  state = { loading: true };
   // Class components have something called life cycle methods
   //  Called when react component is render for the 1st time
   async componentDidMount() {
@@ -18,6 +20,9 @@ class Details extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <h1>Loading... </h1>;
+    }
     const { animal, breed, city, state, description, name } = this.state;
     // console.log(this.state);
     return (
