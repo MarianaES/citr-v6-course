@@ -2,6 +2,7 @@ import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
+import ThemeContext from "./ThemeContext";
 class Details extends Component {
   // constructor() {
   //   super();
@@ -21,7 +22,6 @@ class Details extends Component {
   }
 
   render() {
-    throw new Error("Hi, I am an error.");
     if (this.state.loading) {
       return <h1>Loading... </h1>;
     }
@@ -34,7 +34,13 @@ class Details extends Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {([themeHook]) => (
+              <button style={{ backgroundColor: themeHook }}>
+                Adopt {name}
+              </button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>

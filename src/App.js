@@ -1,38 +1,43 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 // import React from "react"; Not needed anymore, Babel is smart enogh to identify JSXs
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // import Pet from "./Pet";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
+  const theme = useState("pink");
+
   return (
-    <div>
-      <Router>
-        <header>
-          <Link to="/">
-            <h1>Adopt Me!</h1>
-          </Link>
-        </header>
-        {/* React Router will render all components that the path match. That's why we use Switch */}
-        <Switch>
-          <Route path="/details/:id">
-            <Details />
-          </Route>
-          <Route path="/">
-            <SearchParams />
-          </Route>
-        </Switch>
-      </Router>
-      {/* <Pet
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          {/* React Router will render all components that the path match. That's why we use Switch */}
+          <Switch>
+            <Route path="/details/:id">
+              <Details theme={theme} />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+        {/* <Pet
         name="Koly (Gorda preciosa)"
         animal="Dog"
         breed="Beagle/Australian Cattle"
       />
       <Pet name="Agaporni" animal="Bird" breed="Agaporni" />
       <Pet name="Beethoven" animal="Dog" breed="St. Bernard" /> */}
-    </div>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
